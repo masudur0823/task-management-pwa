@@ -13,10 +13,13 @@ export default function AddTask() {
   const handleSubmit = async () => {
     const data = { title, desc, status: status === "true" ? true : false };
     console.log(data);
-    let result = await fetch("http://localhost:3000/api/tasks", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
+    let result = await fetch(
+      "https://taskmanagementpwa.netlify.app/api/tasks",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+      }
+    );
     result = await result.json();
     if (result.success) {
       // alert("data added successfully");

@@ -4,9 +4,12 @@ import { useRouter } from "next/navigation";
 export default function DeleteTask({ id }) {
   const router = useRouter();
   const handleDelete = async () => {
-    let response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
-      method: "delete",
-    });
+    let response = await fetch(
+      `https://taskmanagementpwa.netlify.app/api/tasks/${id}`,
+      {
+        method: "delete",
+      }
+    );
     response = await response.json();
     if (response.success) {
       router.push("/");

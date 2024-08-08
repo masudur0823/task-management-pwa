@@ -16,7 +16,9 @@ export default function AddTask({ params }) {
   }, []);
 
   const getTaskDetails = async () => {
-    let taskData = await fetch(`http://localhost:3000/api/tasks/${id}`);
+    let taskData = await fetch(
+      `https://taskmanagementpwa.netlify.app/api/tasks/${id}`
+    );
     taskData = await taskData.json();
     console.log(taskData);
     if (taskData.success) {
@@ -31,10 +33,13 @@ export default function AddTask({ params }) {
   const handleUpdate = async () => {
     const data = { title, desc, status: status === "true" ? true : false };
     console.log(data);
-    let result = await fetch(`http://localhost:3000/api/tasks/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(data),
-    });
+    let result = await fetch(
+      `https://taskmanagementpwa.netlify.app/api/tasks/${id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(data),
+      }
+    );
     result = await result.json();
     if (result.success) {
       alert("data updated successfully");
