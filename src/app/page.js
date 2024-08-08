@@ -1,7 +1,6 @@
 // import DeleteTask from "@/components/taskPage/DeleteTask";
 import Link from "next/link";
 import DeleteTask from "@/components/taskPage/DeleteTask";
-import { getTasks } from "@/helpers/getTasks";
 import ReloadButton from "@/components/taskPage/ReloadButton";
 
 export default async function Home() {
@@ -45,3 +44,14 @@ export default async function Home() {
 }
 
 // get tasks async function
+const getTasks = async () => {
+  let data = await fetch("http://localhost:3000/api/tasks", {
+    cache: "no-store",
+  });
+  data = await data.json();
+  if (data.success) {
+    return data.result;
+  } else {
+    return { success: false };
+  }
+};
