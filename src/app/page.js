@@ -45,9 +45,7 @@ export default async function Home() {
 
 // get tasks async function
 const getTasks = async () => {
-  let data = await fetch("http://localhost:3000/api/tasks", {
-    cache: "no-store",
-  });
+  let data = await fetch("http://localhost:3000/api/tasks");
   data = await data.json();
   if (data.success) {
     return data.result;
